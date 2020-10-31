@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Context_menu">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="125dp"
+        tools:layout_editor_absoluteY="99dp">
+        <Button
+            android:id="@+id/details"
+            android:layout_width="599dp"
+            android:layout_height="wrap_content"
+            android:text="დეტალური"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="50dp"
+            tools:ignore="MissingConstraints">
+        </Button>
+
+        <Button
+            android:id="@+id/comment"
+            android:layout_width="599dp"
+            android:layout_height="wrap_content"
+            android:text="კომენტარის დამატება"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="149dp"
+            tools:ignore="MissingConstraints">
+        </Button>
+
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="599dp"
+            android:layout_height="wrap_content"
+            android:text="წაშლა"
+            tools:ignore="InvalidId,MissingConstraints"
+            tools:layout_editor_absoluteX="-14dp"
+            tools:layout_editor_absoluteY="346dp">
+        </Button>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
