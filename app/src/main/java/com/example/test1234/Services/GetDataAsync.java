@@ -37,7 +37,6 @@ public class GetDataAsync extends AsyncTask<String, String, ArrayList<Executor>>
     MultiAutoCompleteTextView multi;
 
     public GetDataAsync(Context context, MultiAutoCompleteTextView multi) {
-
         this.context = context;
         this.multi = multi;
     }

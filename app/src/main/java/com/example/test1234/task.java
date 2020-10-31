@@ -109,7 +109,7 @@ public class task extends Activity {
             public void afterTextChanged(Editable s) {
                 Log.i("letter", s.toString());
 
-                if (s.length() > 3) {
+                if (true) {
                     new GetDataAsync(task.this, multi).execute();
                 }
             }
