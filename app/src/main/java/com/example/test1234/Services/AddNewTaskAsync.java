@@ -25,12 +25,13 @@ import java.util.ArrayList;
 
 public class AddNewTaskAsync extends AsyncTask<TaskPost, String, Integer> {
     Context context;
+    public ArrayList<String> selectedIds;
+    public String taskId;
 
-    //public String response = "167";
 
-
-    public  AddNewTaskAsync(Context context) {
+    public  AddNewTaskAsync(Context context, ArrayList<String> selectedIds) {
         this.context = context;
+        this.selectedIds = selectedIds;
     }
 
     @Override
@@ -58,6 +59,7 @@ public class AddNewTaskAsync extends AsyncTask<TaskPost, String, Integer> {
             String response = httpClient.httpPostBody("http://45.9.47.42:8737/api/Task/AddNewTask?Token=KMCG9553NOlQXOQf", new StringEntity(jsonString));
 
             result = Integer.parseInt( response.trim());
+            this.taskId = response;
 
           //  Log.i("result", this.response);
         } catch (UnsupportedEncodingException ex) {
@@ -67,10 +69,26 @@ public class AddNewTaskAsync extends AsyncTask<TaskPost, String, Integer> {
         return result;
     }
 
-//    @Override
-//    protected void onPostExecute(final Integer taskArrayList) {
-//        super.onPostExecute(taskArrayList);
+    @Override
+    protected void onPostExecute(final Integer taskArrayList) {
+        super.onPostExecute(taskArrayList);
+//        Executor executor = new Executor();
+//        executor.TaskId = Integer.getInteger(taskId);
+//        executor.EmpId = Integer.getInteger(selectedIds.get(0));
+////        Log.i("exaa2", executor.EmpId.toString());
+////        Log.i("exaa1", executor.TaskId.toString());
 //
+//        new AddExecutorAsync(context).execute(executor);
 //
-//    }
+////        for (String id : selectedIds) {
+//////            Executor executor = new Executor();
+////            executor.TaskId = Integer.getInteger(taskId);
+//////            executor.EmpId = Integer.getInteger(id);
+////
+////            Log.i("exeeee", id);
+////
+//////            new AddExecutorAsync(context).execute(executor);
+////        }
+
+    }
 }

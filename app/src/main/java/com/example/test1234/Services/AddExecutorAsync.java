@@ -32,9 +32,10 @@ public class AddExecutorAsync extends AsyncTask<Executor, String, Integer> {
 
 //        Log.i("sendData1", executor[0].EmpId.toString());
 
-        Integer taskId = executor[0].TaskId;
-//        Log.i("sendData1", taskId);
-        Integer empId = executor[0].EmpId;
+        String taskId = executor[0].TaskId;
+        String empId = executor[0].EmpId;
+//        Log.i("sendData4", taskId.toString());
+//        Log.i("sendData4", empId.toString());
 
         Integer result = 0;
 

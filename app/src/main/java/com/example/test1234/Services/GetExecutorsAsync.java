@@ -36,7 +36,7 @@ public class GetExecutorsAsync extends AsyncTask<String, String, ArrayList<Emplo
     protected boolean loading = false;
     public ArrayList<String> getEmployee = new ArrayList<String>();
     public String text;
-    public String FullName;
+    public String FullName = "";
     public String Description;
     public String Title;
     public String Comment;
@@ -104,7 +104,10 @@ public class GetExecutorsAsync extends AsyncTask<String, String, ArrayList<Emplo
 //            getEmployee.add(executors.FullName);
 //        }
         if (employees.size() != 0) {
-            this.FullName = employees.get(0).FullName;
+            for (Employee item : employees) {
+                this.FullName += item.FullName + "\n";
+            }
+//            this.FullName = employees.get(0).FullName;
         } else {
             this.FullName = "შემსრულებელი ნეტუუუ";
         }

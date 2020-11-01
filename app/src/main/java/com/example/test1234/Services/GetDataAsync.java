@@ -1,33 +1,24 @@
 package com.example.test1234.Services;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.MultiAutoCompleteTextView;
-import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
+import android.widget.TextView;
 
 
 import com.example.test1234.HttpClient;
 import com.example.test1234.models.Executor;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class GetDataAsync extends AsyncTask<String, String, ArrayList<Executor>> {
     protected boolean loading = false;
@@ -35,10 +26,20 @@ public class GetDataAsync extends AsyncTask<String, String, ArrayList<Executor>>
     public String text;
     Context context;
     MultiAutoCompleteTextView multi;
+    TextView textView;
+    String impId;
+    ArrayList<String> selectedIds = new ArrayList<String>();
+    private static final String[] COUNTRIES = new String[]{
+            "Afghanistan", "Albania", "Algeria", "Andorra", "Angola"
+    };
 
-    public GetDataAsync(Context context, MultiAutoCompleteTextView multi) {
+
+    public GetDataAsync(Context context, MultiAutoCompleteTextView multi, TextView textView, String impId, ArrayList<String> selectedIds) {
         this.context = context;
         this.multi = multi;
+        this.textView = textView;
+        this.impId = impId;
+        this.selectedIds = selectedIds;
     }
 
     @Override
@@ -70,7 +71,7 @@ public class GetDataAsync extends AsyncTask<String, String, ArrayList<Executor>>
                 JSONObject jObject = jsonArray.getJSONObject(i);
                 Executor employee = new Executor();
                 employee.FullName = jObject.getString("fullName");
-                employee.EmpId = jObject.getInt("id");
+                employee.EmpId = Integer.toString(jObject.getInt("id"));
                 employees.add(employee);
             }
         } catch (JSONException ex) {
@@ -87,9 +88,29 @@ public class GetDataAsync extends AsyncTask<String, String, ArrayList<Executor>>
         for (Executor executors : employees) {
             employeeNames.add(executors.FullName);
         }
-        
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, employeeNames);
         multi.setAdapter(adapter);
         multi.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+        multi.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, new ArrayList<String>());
+                multi.setText("");
+                String selected = (String) parent.getItemAtPosition(position);
+                textView.setMovementMethod(new ScrollingMovementMethod());
+                textView.append(selected + "\n");
+                ArrayList<String> name = new ArrayList<String>();
+                ArrayList<String> ids = new ArrayList<String>();
+
+                for (Executor item : employees) {
+                    name.add(item.FullName);
+                    ids.add(item.EmpId.toString());
+                }
+
+                impId = ids.get(name.indexOf(selected));
+                selectedIds.add(impId);
+            }
+        });
     }
 }
