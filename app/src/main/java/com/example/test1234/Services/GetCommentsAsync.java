@@ -34,7 +34,7 @@ import java.util.ArrayList;
 public class GetCommentsAsync extends AsyncTask<String, String, ArrayList<Comment>> {
     public String Description;
     public String Title;
-    public String Comment;
+    public String Comment = "";
     public String StartDate;
     public String EndDate;
     ArrayList<String> getEmployee = new ArrayList<String>();
@@ -82,17 +82,19 @@ public class GetCommentsAsync extends AsyncTask<String, String, ArrayList<Commen
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        if (tasks.size() != 0) {
-            this.Comment = tasks.get(0).Text;
-        } else {
-            this.Comment = "კომენტარები არაა მიბმული";
-        }
         return tasks;
     }
 
     @Override
     protected void onPostExecute(final ArrayList<Comment> taskArrayList) {
         super.onPostExecute(taskArrayList);
+        if (taskArrayList.size() != 0) {
+            for (Comment item : taskArrayList) {
+                this.Comment += item.Text + "\n";
+            }
+        } else {
+            this.Comment = "კომენტარები არაა მიბმული";
+        }
 
         new GetExecutorsAsync(context, listView, Id, Description, Title, Comment, StartDate, EndDate).execute();
 //

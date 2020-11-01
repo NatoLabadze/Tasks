@@ -121,12 +121,11 @@ public class GetTaskAsync extends AsyncTask<String, String, ArrayList<Task>> {
                 public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                     Intent intent = new Intent(context, Context_menu.class);
                     selectedTaskId = taskArrayList.get(position).Id;
-//                  getExecutors(selectedTaskId);
+
                     String Title = taskArrayList.get(position).Title;
                     String Description = taskArrayList.get(position).Description;
                     String startDate = taskArrayList.get(position).StartDate.toString();
                     String endDate = taskArrayList.get(position).EndDate.toString();
-                    Log.i("id", Integer.toString(selectedTaskId));
 
                     intent.putExtra("title", Title);
                     intent.putExtra("description", Description);

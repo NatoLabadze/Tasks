@@ -22,26 +22,44 @@
         android:padding="10sp">
 
 
+        <MultiAutoCompleteTextView
+            android:id="@+id/multi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:hint="მოძებნეთ შემსრულებელი"
+            android:textColor="#000"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/employeeList"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
+            android:background="#25FFFFFF"
+            android:lineSpacingMultiplier="2"
+            android:scrollbars="vertical"
+            android:text=""
+            android:textStyle="bold" />
+
         <LinearLayout
             android:id="@+id/second"
-            android:layout_width="601dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="-10dp"
-            android:layout_marginRight="1dp"
             android:orientation="horizontal">
 
 
-            <EditText
-                android:id="@+id/task"
-                android:layout_width="582dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:layout_marginBottom="10dp"
-                android:hint="დავალების სათაური"
-                android:textColor="#000"
-                android:textSize="15sp" />
-
         </LinearLayout>
+
+        <EditText
+            android:id="@+id/task"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:hint="დავალების სათაური"
+            android:textColor="#000"
+            android:textSize="15sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -53,9 +71,8 @@
 
         <EditText
             android:id="@+id/taskDescription"
-            android:layout_width="583dp"
+            android:layout_width="match_parent"
             android:layout_height="112dp"
-            android:layout_marginLeft="6dp"
             android:layout_marginBottom="10dp"
             android:hint="დავალების აღწერა"
             android:textColor="#000"
@@ -67,22 +84,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10sp"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:padding="10sp">
 
 
         <LinearLayout
             android:id="@+id/tex"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:layout_marginRight="1dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="საწყისი თარიღი:"
                 android:textStyle="bold">
@@ -91,17 +106,21 @@
 
             <TextView
                 android:id="@+id/txt_date1"
-                android:layout_width="83dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="1dp"
                 android:hint="დავალების აღწერა"
                 android:text="2000-1-14"
                 android:textColor="#000"
                 android:textSize="15sp" />
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content" >
             <TextView
-                android:layout_width="178dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:text="საბოლოო თარიღი :"
@@ -111,69 +130,33 @@
 
             <TextView
                 android:id="@+id/txt_date2"
-                android:layout_width="85dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="1dp"
                 android:text="2020-10-10"
                 android:textColor="#000"
                 android:textSize="15sp" />
-
         </LinearLayout>
 
     </LinearLayout>
 
     <Button
         android:id="@+id/saveButton"
-        android:layout_width="320dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="120dp"
         android:layout_marginTop="20dp"
         android:text="დავალების დამატება">
 
     </Button>
 
-    <LinearLayout
-        android:layout_width="583dp"
-        android:layout_height="2dp"
-        android:layout_marginTop="100dp"
-        android:background="#24A5A5">
 
-    </LinearLayout>
+    <!--    <Button-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="50dp"-->
+    <!--        android:id="@+id/saveExecutor"-->
+    <!--        android:text="შემსრულებლის შენახვა">-->
 
-    <TextView
-        android:id="@+id/executor_title"
-        android:layout_width="449dp"
-        android:layout_height="70dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="10dp"
-        android:background="#25FFFFFF"
-        android:paddingLeft="50dp"
-        android:paddingTop="20dp"
-        android:text="შემსრულებლის დამატება"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        />
-
-    <MultiAutoCompleteTextView
-        android:id="@+id/multi"
-        android:layout_width="587dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="6dp"
-        android:layout_marginTop="60dp"
-        android:hint="მოძებნეთ შემსრულებელი"
-        android:textColor="#000"
-        android:textSize="15sp" />
-
-    <Button
-        android:layout_width="324dp"
-        android:layout_height="50dp"
-        android:id="@+id/saveExecutor"
-        android:text="შემსრულებლის შენახვა"
-        android:layout_marginLeft="120dp">
-
-    </Button>
-
+    <!--    </Button>-->
 
 </LinearLayout>
