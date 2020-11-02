@@ -28,11 +28,7 @@ public class GetDataAsync extends AsyncTask<String, String, ArrayList<Executor>>
     MultiAutoCompleteTextView multi;
     TextView textView;
     String impId;
-    ArrayList<String> selectedIds = new ArrayList<String>();
-    private static final String[] COUNTRIES = new String[]{
-            "Afghanistan", "Albania", "Algeria", "Andorra", "Angola"
-    };
-
+    ArrayList<String> selectedIds;
 
     public GetDataAsync(Context context, MultiAutoCompleteTextView multi, TextView textView, String impId, ArrayList<String> selectedIds) {
         this.context = context;
@@ -95,7 +91,6 @@ public class GetDataAsync extends AsyncTask<String, String, ArrayList<Executor>>
         multi.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, new ArrayList<String>());
                 multi.setText("");
                 String selected = (String) parent.getItemAtPosition(position);
                 textView.setMovementMethod(new ScrollingMovementMethod());
@@ -107,8 +102,8 @@ public class GetDataAsync extends AsyncTask<String, String, ArrayList<Executor>>
                     name.add(item.FullName);
                     ids.add(item.EmpId.toString());
                 }
-
-                impId = ids.get(name.indexOf(selected));
+                int saxelisINdeqsi = name.indexOf(selected);
+                impId = ids.get(saxelisINdeqsi);
                 selectedIds.add(impId);
             }
         });

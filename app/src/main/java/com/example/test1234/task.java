@@ -159,8 +159,6 @@ public class task extends Activity {
                             executor.EmpId = id;
 
                             new AddExecutorAsync(task.this).execute(executor);
-
-                            Intent intent = new Intent(task.this, MainActivity.class);
                         }
                     } catch (ExecutionException | InterruptedException ex) {
                         ex.printStackTrace();
